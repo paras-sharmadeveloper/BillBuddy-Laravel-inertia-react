@@ -17,6 +17,7 @@ export default defineConfig({
         alias: {
             'css_root': path.resolve(__dirname, 'resources/css'),
             'js_root': path.resolve(__dirname, 'resources/js'),
+            '@res' : path.resolve(__dirname, 'resources'),
         },
     },
 });

@@ -1,7 +1,7 @@
-import Layout from "../Layouts/Layout";
+
 export default function About() {
     return (
-            <h1>Welcome About</h1>
+            <h1 className="text-center">Welcome About</h1>
 
     );
 }
