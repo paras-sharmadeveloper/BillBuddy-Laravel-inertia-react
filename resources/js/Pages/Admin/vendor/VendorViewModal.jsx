@@ -6,7 +6,6 @@ export default function VendorViewModal({ show, vendorId, onClose }) {
     const [vendor, setVendor] = useState(null);
     const [loading, setLoading] = useState(false);
     const { appUrl } = usePage().props;
-    console.log("appUrl",getFileUrl(vendor.shop.logo, appUrl))
     useEffect(() => {
         if (show && vendorId) {
             setLoading(true);
