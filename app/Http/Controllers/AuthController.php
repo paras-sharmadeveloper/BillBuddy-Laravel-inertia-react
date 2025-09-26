@@ -37,6 +37,35 @@ class AuthController extends Controller
         return Inertia::render('Admin/Register');
     }
 
+    public function VendorList(Request $request)
+    {
+
+        $search = $request->input('search');
+
+        $vendors = User::with('shop')
+            ->where('role', 'vendor')
+            ->when($search, function ($query, $search) {
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('phone', 'like', "%{$search}%")
+                        ->orWhereHas('shop', function ($q2) use ($search) {
+                            $q2->where('name', 'like', "%{$search}%");
+                        });
+                });
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(10)
+            ->withQueryString();
+
+        return Inertia::render('Admin/vendor/List', [
+            'data' => $vendors,
+            'filters' => [
+                'search' => $search,
+            ]
+        ]);
+    }
+
     public function register(Request $request)
     {
         $data = $request->validate([

@@ -1,6 +1,11 @@
 import { Link } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
+
 
 export default function Sidebar() {
+       const { auth } = usePage().props;
+
+       console.log("auth",auth)
     return (
         <>
             <nav className="sidebar sidebar-offcanvas" id="sidebar">
@@ -17,10 +22,10 @@ export default function Sidebar() {
                             </div>
                             <div className="nav-profile-text d-flex flex-column">
                                 <span className="font-weight-bold mb-2">
-                                    David Grey. H
+                                   {auth.user?.name}
                                 </span>
                                 <span className="text-secondary text-small">
-                                    Project Manager
+                                   {auth.user?.role}
                                 </span>
                             </div>
                             <i className="mdi mdi-bookmark-check text-success nav-profile-badge" />
@@ -29,6 +34,14 @@ export default function Sidebar() {
                     <li className="nav-item">
                         <Link className="nav-link" href="/dashboard">
                             <span className="menu-title">Dashboard</span>
+                            <i className="mdi mdi-home menu-icon" />
+                        </Link>
+
+
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" href="/vendor-list">
+                            <span className="menu-title">Vendor List</span>
                             <i className="mdi mdi-home menu-icon" />
                         </Link>
                     </li>

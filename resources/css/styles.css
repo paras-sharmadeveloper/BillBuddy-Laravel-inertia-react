@@ -105,3 +105,13 @@ footer {
     float: none;
   }
 }
+
+
+td.acd {
+    display: flex;
+    justify-content: space-around;
+    font-size: 16px;
+}
+td.acd i {
+    color: #5b32ad;
+}

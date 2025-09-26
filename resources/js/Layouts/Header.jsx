@@ -1,9 +1,10 @@
 import { Link } from "@inertiajs/react";
 import { router } from '@inertiajs/react';
-
+import { usePage } from "@inertiajs/react";
 import "css_root/styles.css";
 
 export default function Header() {
+    const { auth } = usePage().props;
     return (
         <header>
             <nav className="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -61,7 +62,7 @@ export default function Header() {
                                 </div>
                                 <div className="nav-profile-text">
                                     <p className="mb-1 text-black">
-                                        David Greymaax
+                                         {auth.user?.name}
                                     </p>
                                 </div>
                             </a>
